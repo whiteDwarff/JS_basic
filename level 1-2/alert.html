@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="alertBox" id="alert">
+        <p>알림창임</p>
+        <button onclick="alertBox('none')">CLOSE</button>
+    </div>
+    <!-- onclick = 누르면 JS 코드를 실행하겠다 ~ -->
+    <button onclick="alertBox('block')">BUTTON</button>
+    <button onclick="buttonHandler('아이디를 입력하세요 : ');">ID</button>
+    <button onclick="buttonHandler('비밀번호를 입력하세요 : ');">PASS</button>
+
+
+
+
+
+    <script>
+// ---------------------------------------------------- level 1-3
+    //    function 알림창닫기() {
+    //     document.getElementById('alert').style.display='none';
+    //    }
+    //    function 알림창열기() {
+    //     document.getElementById('alert').style.display='block';
+    //    }
+
+ // ---------------------------------------------------- level 1-4
+        // 인자 = 파라미터 사용하기
+        function alertBox(event) {
+            document.getElementById('alert').style.display = event;
+        }
+        function plus(구멍) {
+        return 2 + 구멍
+    }
+    console.log(plus(1 /* 1은 구멍이다 !!*/));
+    // 숙제
+    function buttonHandler(event) {
+        change = document.querySelector('p');
+        change.innerHTML = event;
+    }
+
+
+ // -------------------------------------------------------------
+
+
+    </script>
+</body>
+</html>

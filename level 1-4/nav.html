@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <h1>안녕하세요</h1>
+        <button class="navbar-toggler" type="button">CLICK</button>
+    </nav>
+    <ul class="list-group">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    
+
+    <script>
+        function listHandler() {
+            group = document.querySelector('.list-group');
+            // toggle = 상태를 바꿔준다(0,1), 있으면 재거, 없으면 추가
+            group.classList.toggle('show');
+        }
+        
+        btn = document.querySelector('.navbar-toggler');
+        btn.addEventListener('click', listHandler);
+
+        /*
+        querySelector = CSS요소로 찾을 수 있음 (맨위에 나오는 하나만 !!)
+        querySelectorAll = 해당되는 모든 CSS요소를 찾아줌
+        document.querySelector('.list-group')
+                              ('#list-group')
+        */
+    </script>
+</body>
+</html>

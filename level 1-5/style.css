@@ -1,0 +1,32 @@
+
+.list-group{
+    display: none;
+}
+.query {
+    font-size: 100px;
+}
+#popUp {
+    width: 400px;
+    height: 150px;
+    border-radius: 10px;
+    border: thin solid grey;
+    text-align: center;
+    position: relative;
+    background-color: wheat;
+    /* display: none; */
+}
+
+#popUp span {
+    display: block;
+    line-height: 150px;
+    font-size: 20px;
+}
+#popUp button {
+    position: absolute;
+    bottom : 20px;
+    left: 175px;
+}
+.show {
+    display: block;
+}
+

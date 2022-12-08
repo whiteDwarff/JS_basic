@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="work.css">
+</head>
+<body>
+    <div class="popUp">
+        <span>아이디, 비밀번호를 입력하세요!!</span>
+        <button>닫기</button>
+    </div>
+    <button class="loginBtn" style="padding:10px">LOGIN</button>
+    <button class="dropBtn">DropDown List</button>
+
+    <ul class="group-list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+
+    <script>
+        function eventHandeler() {
+            let popup = document.getElementsByClassName('popUp')[0];
+            popup.classList.add('show-modal');
+        }
+        function btnEventHandeler() {
+            this.addEventListener('click', function(){
+                document.getElementsByClassName('popUp')[0].classList.remove('show-modal');
+            })
+        }
+    
+
+        window.onload = function(){
+            let btn = document.getElementsByClassName('loginBtn')[0];
+            btn.addEventListener('click', eventHandeler);
+
+            let popUpbtn = document.querySelector('.popUp button');
+            popUpbtn.addEventListener('click', btnEventHandeler);
+
+            let dropDown = document.getElementsByClassName('dropBtn')[0];
+            dropDown.addEventListener('click', function(){
+                    document.getElementsByClassName('group-list')[0].classList.toggle('showli');
+            });
+        }
+    </script>
+</body>
+</html>

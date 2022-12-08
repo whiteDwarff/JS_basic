@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.popUp {
+    width: 400px;
+    height: 130px;
+    background-color: white;
+    text-align: center;
+    border-radius: 10px;
+    border: thin solid grey;
+    position: absolute;
+    top: 0;
+    /* animation  */
+    opacity: 0;
+    /* display: none 대신 사용할 코드 ( 성능상 같고, animation 적용 시 꼭 사용,모습만 숨긴다.  */
+    visibility: hidden; 
+    transition: all 1s;
+}
+
+.show-modal {
+    visibility: visible;
+    opacity: 1;
+}
+.popUp span {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+/* 애니매이션 만드는 법칙
+
+    - one-way-animation : 0 -> 1로 바뀌는 법
+                          font-size가 15px - > 30px로 바뀌는 법
+
+                          1. 시작 스타일 
+                          2. 최종 스타일 
+                          3. 원할 떄 JS로 최종 스타일로 변하라고 코드 작성
+                          4. transition 추가 
+
+
+*/
+
+.group-list {
+    width: 400px;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+.group-list li {
+    padding: 20px 0px;
+    list-style: none;
+    border-bottom: thin solid white;
+    background-color: #ccc;
+    margin-left: 30px;
+    padding-left: 30px;
+    color: white;
+}
+.showli {
+    visibility: visible;
+    height: inherit;
+    height: 400px;
+    opacity: 1;
+}

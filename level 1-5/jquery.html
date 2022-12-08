@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script
+    src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav>
+        <h1>안녕하세요</h1>
+        <button class="navbar-toggler" type="button">CLICK</button>
+    </nav>
+    <ul class="list-group">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <p class="hello">안녕</p>
+    <p class="hello">안녕</p>
+    <p class="hello">안녕</p>
+    <button id="test-btn">BUTTON</button>
+    <script>
+        // ------------------------------------------ 숙제
+
+        function listHandler() {
+            group = document.querySelector('.list-group');
+            // toggle = 상태를 바꿔준다(0,1), 있으면 재거, 없으면 추가
+            group.classList.toggle('show');
+        }
+        
+        btn = document.querySelector('.navbar-toggler');
+        btn.addEventListener('click', listHandler);
+
+     
+        // ------------------------------------------ jquery
+        $('.hello').html('바보');
+        $('.hello').css('color', 'red');
+        $('.hello').addClass('query');
+
+        $('#test-btn').on('click', function(){
+            // $('.hello').fadeOut(); // 서서히 사라짐
+            $('.hello').slideUp();    // 위쪽으로 서서히 사라짐
+        });
+
+
+    </script>
+    <!-- jquery 
+         - querySelector    : $
+         - addEventListener : on
+         - 항상 querySelectorAll과 같다  
+         - jquery 전용 메소드나 함수만 사용 가능함
+        -->
+
+</body>
+</html>
