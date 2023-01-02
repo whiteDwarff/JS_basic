@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,47 +8,67 @@
     <title>Document</title>
     <link rel="stylesheet" href="work.css">
 </head>
+
 <body>
     <div class="popUp">
         <span>아이디, 비밀번호를 입력하세요!!</span>
         <button>닫기</button>
     </div>
     <button class="loginBtn" style="padding:10px">LOGIN</button>
-    <button class="dropBtn">DropDown List</button>
-
-    <ul class="group-list">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-    </ul>
+    <header>
+        <nav>
+            <button class="dropBtn">List</button>
+            <ul class="group-list">
+                <li>
+                    Outer
+                    <ul class="sub_ul">
+                        <li><a href="https://hokeydokey.tistory.com/19">Coat</a><li>
+                        <li><a href="">Jacket</a></li>
+                        <li><a href="">Jumper</a></li>
+                        <li><a href="">Padding</a></li>
+                    </ul>
+                </li>
+                <li>Top</li>
+                <li>Bottom</li>
+                <li>Acc</li>
+            </ul>
+        </nav>
+    </header>
 
 
     <script>
+        function subUlEventHandler() {
+            this.addEventListener("click", function(){
+                subUl = document.getElementsByClassName("sub_ul")[0]; 
+                subUl.classList.toggle('show_sub_li');
+            })
+        }
+        function btnEventHandeler() {
+            this.addEventListener('click', function () {
+                document.getElementsByClassName('popUp')[0].classList.remove('show-modal');
+            })
+        }
         function eventHandeler() {
             let popup = document.getElementsByClassName('popUp')[0];
             popup.classList.add('show-modal');
         }
-        function btnEventHandeler() {
-            this.addEventListener('click', function(){
-                document.getElementsByClassName('popUp')[0].classList.remove('show-modal');
-            })
-        }
-    
 
-        window.onload = function(){
+
+        window.onload = function () {
             let btn = document.getElementsByClassName('loginBtn')[0];
             btn.addEventListener('click', eventHandeler);
 
             let popUpbtn = document.querySelector('.popUp button');
             popUpbtn.addEventListener('click', btnEventHandeler);
-
+            // dropdown ul
             let dropDown = document.getElementsByClassName('dropBtn')[0];
-            dropDown.addEventListener('click', function(){
-                    document.getElementsByClassName('group-list')[0].classList.toggle('showli');
+            dropDown.addEventListener('click', function () {
+                document.getElementsByClassName('group-list')[0].classList.toggle('showli');
             });
+            let mainUl = document.querySelector('.group-list li');
+            mainUl.addEventListener('click', subUlEventHandler);
         }
     </script>
 </body>
+
 </html>

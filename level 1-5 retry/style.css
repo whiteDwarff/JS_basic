@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.black-bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 5;
+    padding: 30px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .5s;
+}
+ul {
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1s;
+    overflow: hidden;
+}
+ul li {
+    padding: 10px;
+    margin-bottom: 5px;
+    list-style: none;
+    background-color: plum;
+    width: 20%;
+}
+
+.show-ul {
+    height: 100vh;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+}

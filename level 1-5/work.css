@@ -40,27 +40,80 @@
 
 
 */
-
+/* -----------------nav bar------------------ */
+header {
+    background-color: antiquewhite;
+    
+}
+nav {
+    display: flex;
+    position: relative;
+}
+.dropBtn  {
+    position: absolute;
+    top: 0;
+    left: 400px;
+    padding: 10px;
+}
 .group-list {
     width: 400px;
-    height: 0;
+    height: 100%;
     visibility: hidden;
     overflow: hidden;
     opacity: 0;
     transition: 0.5s;
+    position: absolute;
+    top: 0; 
+    left: 0;
 }
 .group-list li {
-    padding: 20px 0px;
     list-style: none;
-    border-bottom: thin solid white;
+    height: 40px;
+    line-height: 40px;
+    padding-left:10px;
+    border-bottom: 2px solid white;
     background-color: #ccc;
-    margin-left: 30px;
-    padding-left: 30px;
     color: white;
+    font-weight: bold;
 }
-.showli {
+.group-list li:last-child{
+    border-bottom: none;
+}
+/* -----------------sub li------------------ */
+.sub_ul {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    transition: 0.5s;
+}
+/* .sub_ul li {
+    width: 100%;
+    border-bottom: 2px solid white ;
+}
+.sub_ul li:first-child{
+    border-top: thin solid white;
+}
+.sub_ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    width: inherit;
+    background-color: aqua;
+    margin-left: 20px;
+}
+
+.show_sub_li {
     visibility: visible;
-    height: inherit;
-    height: 400px;
+    height: 40px;
     opacity: 1;
+
+} */
+.showli {
+    width: 400px;
+    height: 800px;
+    visibility: visible;
+    opacity: 1;
+    position: absolute;
+    top: 0; 
+    left: 0;
 }
