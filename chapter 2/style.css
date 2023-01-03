@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+body {
+    transition: background 0.5s ease;
+}
+header {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+}
+nav .wrap {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.black-bg {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 5;
+    padding: 30px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .5s;
+}
+.black-bg .white-bg {
+    background-color: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+}
+.black-bg .white-bg h4 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+}
+.btn {
+    display: inline;
+    background-color: red;
+    padding: 5px 10px;
+    border-style: none;
+    border-radius: 10%;
+    margin-top: 10px;
+    color: white;
+    margin-left: 5px;
+}
+.btn-primary {
+    background-color: blue;
+    margin-left: 0px;
+}
+#submitData {
+    font-size: 10px;
+    color: red;
+}
+.black-bg input {
+    width: 95%;
+    margin-bottom: 5px;
+    padding: 5px 0 5px 5%;
+}
+.main-bg {
+    padding: 100px 20px;
+    background-color: lightgrey;
+}
+
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dark-mode {
+    background-color: #333;
+    color: white;
+}
