@@ -1,4 +1,6 @@
-// let count = 0;
+let count = 0;
+let nextCount = 1;
+let returnCount = 1;
 
 
 function modalEventHandler() {
@@ -35,16 +37,16 @@ function inputSubmitEventHandler(ev) {
 }
 function darkModeEventHandler() {
     let body = document.getElementsByTagName('body')[0];
-    // if(count == 0){
-    //     body.classList.add('dark-mode');
-    //     this.innerText = 'Light 🔄';
-    //     count++;
-    // } else {
-    //     body.classList.remove('dark-mode');
-    //     this.innerText = 'Dark 🔄';
-    //     count--;
-    // }
-    body.classList.toggle('dark-mode');
+    if(count == 0){
+        body.classList.add('dark-mode');
+        this.innerText = 'Light 🔄';
+        count++;
+    } else {
+        body.classList.remove('dark-mode');
+        this.innerText = 'Dark 🔄';
+        count--;
+    }
+    // body.classList.toggle('dark-mode');
 }
 
 
@@ -65,6 +67,40 @@ function eventBox() {
     }, 1000);
 }
 
+function slideEventHandler1() {
+    let slide = document.getElementsByClassName('slide-banner')[0];
+    slide.style.transform = 'translateX(0vw)';
+}
+function slideEventHandler2() {
+    let slide = document.getElementsByClassName('slide-banner')[0];
+    slide.style.transform = 'translateX(-100vw)';
+}
+function slideEventHandler3() {
+    let slide = document.getElementsByClassName('slide-banner')[0];
+    slide.style.transform = 'translateX(-200vw)';
+}
+function nextSlideEventHandler() {
+    let slide = document.getElementsByClassName('slide-banner')[0];
+
+    slide.style.transform = `translateX(-${nextCount}00vw)`;
+    nextCount++;
+
+    if(nextCount == 3) {
+        nextCount = 0;
+    }
+}
+function returnSlideEventHandler() {
+    let slide = document.getElementsByClassName('slide-banner')[0];
+    
+    slide.style.transform = `translateX(${returnCount}00vw)`;
+    returnCount++;
+
+
+    if(returnCount == 0){
+        slide.style.transform = `translateX(-${300}vw)`;
+    }
+    
+}
 
 //////////////////////////////////////////////////////////////////
 
@@ -77,14 +113,27 @@ window.onload = function() {
     let modalButton = document.querySelector('#close');
     let submitBtn = document.getElementsByClassName('btn-primary')[0];
     let darkModeBtn = document.querySelector('nav span:last-child');
+
+    let slideBtn1 = document.getElementsByClassName('slide-1')[0];
+    let slideBtn2 = document.getElementsByClassName('slide-2')[0];
+    let slideBtn3 = document.getElementsByClassName('slide-3')[0];
+    let nextBtn = document.getElementsByClassName('next-btn')[0];
+    let returnBtn = document.getElementsByClassName('return-btn')[0];
     
     button.addEventListener('click', modalEventHandler);
     modalButton.addEventListener('click', modalCloseEventHandler);
     submitBtn.addEventListener('click', inputSubmitEventHandler);
     darkModeBtn.addEventListener('click', darkModeEventHandler);
-    
-    
+        
     eventBox();
+
+    slideBtn1.addEventListener('click', slideEventHandler1);
+    slideBtn2.addEventListener('click', slideEventHandler2);
+    slideBtn3.addEventListener('click', slideEventHandler3);
+    nextBtn.addEventListener('click', nextSlideEventHandler);
+    returnBtn.addEventListener('click', returnSlideEventHandler);
+
+    
     
     //////////////////////////////////////////////////////////////////
 

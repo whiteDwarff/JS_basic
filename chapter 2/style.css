@@ -35,6 +35,9 @@ nav .wrap {
     width: 300px;
     padding: 20px;
     border-radius: 10px;
+    position:absolute;
+    top: 20%;
+    left: 40%;
 }
 .black-bg .white-bg h4 {
     margin-bottom: 10px;
@@ -67,10 +70,31 @@ nav .wrap {
     margin-bottom: 5px;
     padding: 5px 0 5px 5%;
 }
+#banner {
+    background-color: lightgrey;
+}
 .main-bg {
+    width: 1200px;
+    margin: 0 auto;
     padding: 100px 20px;
     background-color: lightgrey;
 }
+/*  --------------------------------slide-banner--------------------------------*/
+#slide-banner {
+    overflow: hidden;
+}
+.slide-banner{
+    width: 300vw;
+    transition: all 1s;
+}
+.slide-banner .slide-box{
+    width: 100vw;
+    float: left;
+}
+.slide-banner .slide-box img {
+    width: 100%;
+}
+
 
 .show-modal {
     opacity: 1;

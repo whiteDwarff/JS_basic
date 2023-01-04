@@ -35,6 +35,9 @@ nav .wrap {
     width: 300px;
     padding: 20px;
     border-radius: 10px;
+    position:absolute;
+    top: 20%;
+    left: 40%;
 }
 .black-bg .white-bg h4 {
     margin-bottom: 10px;
@@ -67,7 +70,12 @@ nav .wrap {
     margin-bottom: 5px;
     padding: 5px 0 5px 5%;
 }
+section {
+    background-color: lightgrey;
+}
 .main-bg {
+    width: 1200px;
+    margin: 0 auto;
     padding: 100px 20px;
     background-color: lightgrey;
 }

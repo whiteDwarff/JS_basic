@@ -29,16 +29,16 @@ function inputSubmitEventHandler(ev) {
 
 function darkModeEventHandler() {
     let body = document.getElementsByTagName('body')[0];
-    // if(count == 0){
-    //     body.classList.add('dark-mode');
-    //     this.innerText = 'Light 🔄';
-    //     count++;
-    // } else {
-    //     body.classList.remove('dark-mode');
-    //     this.innerText = 'Dark 🔄';
-    //     count--;
-    // }
-    body.classList.toggle('dark-mode');
+    if(count == 0){
+        body.classList.add('dark-mode');
+        this.innerText = 'Light 🔄';
+        count++;
+    } else {
+        body.classList.remove('dark-mode');
+        this.innerText = 'Dark 🔄';
+        count--;
+    }
+    // body.classList.toggle('dark-mode');
 }
 //////////////////////////////////////////////////////////////////
 
