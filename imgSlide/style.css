@@ -1,0 +1,47 @@
+*{ 
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+.slide-wrap {
+    position: relative;
+    width: 660px;
+    margin: 0 auto;
+    height: 200px;
+    overflow: hidden;
+}
+.slide-wrap .slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.slides li {
+    width: 200px;
+    height: 200px;
+    background-color: #ccc;
+    float: left;
+}
+.slides li:not(:last-child) { /* 막내 빼고는 이 스타일을 적용 ~*/
+    margin-right: 30px;
+}
+.controls span:first-child {
+    margin-right: 10px;
+}
+.controls {
+    text-align: center;
+    margin-top: 50px;
+}
+.controls span {
+    display: inline-block;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+
+
+.animated{
+	transition: 0.5s ease-out;
+}

@@ -82,13 +82,15 @@ nav .wrap {
 /*  --------------------------------slide-banner--------------------------------*/
 #slide-banner {
     overflow: hidden;
+    width: 1200px;
+    margin: 0 auto;
 }
 .slide-banner{
-    width: 300vw;
+    width: 3600px;
     transition: all 1s;
 }
 .slide-banner .slide-box{
-    width: 100vw;
+    width: 1200px;
     float: left;
 }
 .slide-banner .slide-box img {

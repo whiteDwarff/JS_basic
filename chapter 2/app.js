@@ -1,6 +1,6 @@
 let count = 0;
-let nextCount = 1;
-let returnCount = 1;
+let nextCount = 12;
+let returnCount = 0;
 
 
 function modalEventHandler() {
@@ -69,37 +69,65 @@ function eventBox() {
 
 function slideEventHandler1() {
     let slide = document.getElementsByClassName('slide-banner')[0];
-    slide.style.transform = 'translateX(0vw)';
+    slide.style.transform = 'translateX(0px)';
 }
 function slideEventHandler2() {
     let slide = document.getElementsByClassName('slide-banner')[0];
-    slide.style.transform = 'translateX(-100vw)';
+    slide.style.transform = 'translateX(-1200px)';
 }
 function slideEventHandler3() {
     let slide = document.getElementsByClassName('slide-banner')[0];
-    slide.style.transform = 'translateX(-200vw)';
+    slide.style.transform = 'translateX(-2400px)';
 }
 function nextSlideEventHandler() {
     let slide = document.getElementsByClassName('slide-banner')[0];
 
-    slide.style.transform = `translateX(-${nextCount}00vw)`;
-    nextCount++;
+    slide.style.transform = `translateX(-${nextCount}00px)`;
+    nextCount+=12;
 
-    if(nextCount == 3) {
+    if(nextCount == 36) {
         nextCount = 0;
+        // returnCount = 12;
     }
+    
+    console.log("next rc: "+returnCount);
+    console.log("next nc: "+nextCount);
 }
 function returnSlideEventHandler() {
     let slide = document.getElementsByClassName('slide-banner')[0];
     
-    slide.style.transform = `translateX(${returnCount}00vw)`;
-    returnCount++;
+    // slide.style.transform = `translateX(-${returnCount}00px)`;
+    // returnCount -=12;
+    
+    // slide.style.transform = `translateX(-${returnCount}00px)`;
+    // returnCount =12;
 
+    // console.log(returnCount);
+    // if(nextCount == 0){
+    //     slide.style.transform = `translateX(-${nextCount}00px)`;
+    //     returnCount = 24;
+    // } else if(nextCount == 12) {
+    //     slide.style.transform = `translateX(-${nextCount}00px)`;
+    //     returnCount = 12;
+        
+    // } else if(nextCount == 12) {
+    //     slide.style.transform = `translateX(-${nextCount}00px)`;
+    //     returnCount = 0;
+    
+    // }
 
-    if(returnCount == 0){
-        slide.style.transform = `translateX(-${300}vw)`;
+    
+
+    slide.style.transform = `translateX(-${nextCount}00px)`;
+    if(nextCount>0){
+        nextCount-=12;
+    }else{
+        nextCount=24;
     }
     
+    console.log("return rc: "+returnCount);
+    console.log("return nc: "+nextCount);
+
 }
 
 //////////////////////////////////////////////////////////////////
@@ -108,7 +136,7 @@ function returnSlideEventHandler() {
 
 window.onload = function() {
     
-    
+    console.log(returnCount);
     let button = document.getElementById('login');
     let modalButton = document.querySelector('#close');
     let submitBtn = document.getElementsByClassName('btn-primary')[0];
