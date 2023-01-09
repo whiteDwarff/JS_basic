@@ -114,6 +114,43 @@ function moveSlide(num) {
         }, 600);
     }
 }
+//////////////////////////////////////////////////////////////////scroll
+function navScrollEvent() {
+    let h1 = document.querySelector('nav');
+    if(this.scrollY > 100) { // == window.pageYOffset
+        h1.style.fontSize = '16px';
+        h1.style.transition = "0.5s ease-out";
+    } else {
+        h1.style.fontSize = '30px';
+    }
+    // console.log(this.scrollY);
+}
+function loremScrollEvent() {
+    let scroll = this.scrollTop
+    let scrollHeight = this.scrollHeight;
+    let clientHeight = this.clientHeight; // 화면에 보이는 div의 실제 높이
+
+    console.log(scroll + '/' + scrollHeight  + '/' + clientHeight);
+    // scrollTop = scroll을 내린 값, 객체의 모든 scroll 높이가 아님 !!
+
+    // div의 스크롧 바 : 내린양 + 눈에 보이는 div의 높이 == div의 실제 높이
+
+    if(scroll + clientHeight > scrollHeight - 3) {
+        alert('동의하십니까?');
+        // 최초 한번만 실행 후 event제거
+        this.removeEventListener('scroll', loremScrollEvent);
+    }
+}
+// let htmlScrollEvent = () => {
+//     let scroll = this.scrollTop
+//     let scrollHeight = this.scrollHeight;
+//     let clientHeight = this.clientHeight
+
+//     // console.log(scroll + scrollHeight + clientHeight);
+//     console.log(this.scrollY);
+
+// }
+
 //////////////////////////////////////////////////////////////////script playing
 
     let button = document.getElementById('login');
@@ -136,6 +173,13 @@ function moveSlide(num) {
         moveSlide(currentIdx - 1);
     });
     makeClone();
+
+    window.addEventListener('scroll', navScrollEvent)
+
+    document.querySelector('#member').addEventListener('scroll', loremScrollEvent);
+
+    let html1 = document.querySelector('html');
+    html1.addEventListener('scroll', htmlScrollEvent);
  //////////////////////////////////////////////////////////////////
 
 // }
@@ -156,4 +200,7 @@ function moveSlide(num) {
     email 형식   : /\S+@\S+\.\S+/.test('aaaa@bbbb.com')
 
            .test(정규식);
+
+
+
 */ 

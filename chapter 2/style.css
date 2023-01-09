@@ -6,14 +6,22 @@
 body {
     transition: background 0.5s ease;
 }
+.wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
 header {
     width: 100%;
     height: 50px;
     line-height: 50px;
 }
+nav {
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    font-size: 30px;
+}
 nav .wrap {
-    width: 1200px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
 }
@@ -74,8 +82,6 @@ nav .wrap {
     background-color: lightgrey;
 }
 .main-bg {
-    width: 1200px;
-    margin: 0 auto;
     padding: 100px 20px;
     background-color: lightgrey;
 }
