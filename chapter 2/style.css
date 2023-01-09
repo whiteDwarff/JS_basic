@@ -81,21 +81,44 @@ nav .wrap {
 }
 /*  --------------------------------slide-banner--------------------------------*/
 #slide-banner {
+    position: relative;
     overflow: hidden;
     width: 1200px;
+    height: 600px;
     margin: 0 auto;
 }
-.slide-banner{
-    width: 3600px;
-    transition: all 1s;
+#slide-banner .slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
-.slide-banner .slide-box{
+#slide-banner .slides li{
+    list-style: none;
     width: 1200px;
-    float: left;
+    height: 600px;
+    float:left;
 }
-.slide-banner .slide-box img {
-    width: 100%;
+#slide-banner .slides img{
+    display: block;
 }
+
+.control {
+    font-size: 50px;
+}
+.control span:first-child {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    z-index: 10;
+}
+.control span:not(:first-child) {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    z-index: 10;
+}
+
 
 
 .show-modal {
@@ -106,4 +129,7 @@ nav .wrap {
 .dark-mode {
     background-color: #333;
     color: white;
+}
+.animated {
+    transition:  0.5s ease-out;
 }

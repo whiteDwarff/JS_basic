@@ -1,7 +1,11 @@
-let count = 0;
-let nextCount = 12;
-let returnCount = 0;
-
+let slides = document.querySelector('.slides'),
+    slide  = document.querySelectorAll('.slides li'),
+    currentIdx = 0, 
+    slideCount = slide.length,
+    slideWidth = 1200,
+    prevBtn = document.querySelector('.prev'),
+    nextBtn = document.querySelector('.next'),
+    count = 0;
 
 function modalEventHandler() {
     let modalBox = document.getElementsByClassName('black-bg')[0];
@@ -48,14 +52,12 @@ function darkModeEventHandler() {
     }
     // body.classList.toggle('dark-mode');
 }
-
-
 ////////////////////////////////////////////////////////////////// chapter 2
 function eventBox() {
     
     let timeCount = 5;
     let eventBox = document.getElementById('time-event-box');
-
+    
     let timeEvent = setInterval(function(){
         if(timeCount > 0) {
             timeCount-=1;   
@@ -66,88 +68,59 @@ function eventBox() {
         }
     }, 1000);
 }
-
-function slideEventHandler1() {
-    let slide = document.getElementsByClassName('slide-banner')[0];
-    slide.style.transform = 'translateX(0px)';
-}
-function slideEventHandler2() {
-    let slide = document.getElementsByClassName('slide-banner')[0];
-    slide.style.transform = 'translateX(-1200px)';
-}
-function slideEventHandler3() {
-    let slide = document.getElementsByClassName('slide-banner')[0];
-    slide.style.transform = 'translateX(-2400px)';
-}
-function nextSlideEventHandler() {
-    let slide = document.getElementsByClassName('slide-banner')[0];
-
-    slide.style.transform = `translateX(-${nextCount}00px)`;
-    nextCount+=12;
-
-    if(nextCount == 36) {
-        nextCount = 0;
-        // returnCount = 12;
+////////////////////////////////////////////////////////////////// slide
+function makeClone() {
+    for(let i = 0; i < slideCount; i++) {
+        let cloneSlide = slide[i].cloneNode(true);
+        cloneSlide.classList.add('clone');
+        slides.appendChild(cloneSlide);
     }
-    
-    console.log("next rc: "+returnCount);
-    console.log("next nc: "+nextCount);
-}
-function returnSlideEventHandler() {
-    let slide = document.getElementsByClassName('slide-banner')[0];
-    
-    // slide.style.transform = `translateX(-${returnCount}00px)`;
-    // returnCount -=12;
-    
-    // slide.style.transform = `translateX(-${returnCount}00px)`;
-    // returnCount =12;
-
-    // console.log(returnCount);
-    // if(nextCount == 0){
-    //     slide.style.transform = `translateX(-${nextCount}00px)`;
-    //     returnCount = 24;
-    // } else if(nextCount == 12) {
-    //     slide.style.transform = `translateX(-${nextCount}00px)`;
-    //     returnCount = 12;
-        
-    // } else if(nextCount == 12) {
-    //     slide.style.transform = `translateX(-${nextCount}00px)`;
-    //     returnCount = 0;
-    
-    // }
-
-    
-
-    slide.style.transform = `translateX(-${nextCount}00px)`;
-    if(nextCount>0){
-        nextCount-=12;
-    }else{
-        nextCount=24;
+    for(let i = slideCount-1; i >= 0; i--) {
+        let cloneSlide = slide[i].cloneNode(true);
+        cloneSlide.classList.add('clone');
+        slides.prepend(cloneSlide);
     }
-    
-    console.log("return rc: "+returnCount);
-    console.log("return nc: "+nextCount);
-
+    updateWidth();
+    setInitialPos();
+    setTimeout(function(){
+        slides.classList.add('animated');
+    }, 100);
 }
+function updateWidth() {    // 슬라이드의 가로 값 구하기
+    let currentSlides = document.querySelectorAll('.slides li');
+    let newSlideCount = currentSlides.length;
+    let newWidth = slideWidth * newSlideCount + 'px';
 
-//////////////////////////////////////////////////////////////////
+    slides.style.width = newWidth;
+}
+function setInitialPos() {  // 슬라이드의 처음 포지션(위치) 값
+    let value = `-${slideWidth * slideCount}`;
+    slides.style.transform = `translateX(${value}px)`;
+}
+function moveSlide(num) {
+    // left : position:left의 값
+    slides.style.left = -num * slideWidth + 'px';
+    currentIdx = num;
+    console.log(currentIdx, slideCount);
 
+    if(currentIdx == slideCount || currentIdx == -slideCount) {
+        setTimeout(function(){
+            slides.classList.remove('animated');
+            slides.style.left = '0px';
+            currentIdx = 0;
+        }, 500);
+        setTimeout(function(){
+            slides.classList.add('animated');
+        }, 600);
+    }
+}
+//////////////////////////////////////////////////////////////////script playing
 
-
-window.onload = function() {
-    
-    console.log(returnCount);
     let button = document.getElementById('login');
     let modalButton = document.querySelector('#close');
     let submitBtn = document.getElementsByClassName('btn-primary')[0];
     let darkModeBtn = document.querySelector('nav span:last-child');
 
-    let slideBtn1 = document.getElementsByClassName('slide-1')[0];
-    let slideBtn2 = document.getElementsByClassName('slide-2')[0];
-    let slideBtn3 = document.getElementsByClassName('slide-3')[0];
-    let nextBtn = document.getElementsByClassName('next-btn')[0];
-    let returnBtn = document.getElementsByClassName('return-btn')[0];
-    
     button.addEventListener('click', modalEventHandler);
     modalButton.addEventListener('click', modalCloseEventHandler);
     submitBtn.addEventListener('click', inputSubmitEventHandler);
@@ -155,17 +128,17 @@ window.onload = function() {
         
     eventBox();
 
-    slideBtn1.addEventListener('click', slideEventHandler1);
-    slideBtn2.addEventListener('click', slideEventHandler2);
-    slideBtn3.addEventListener('click', slideEventHandler3);
-    nextBtn.addEventListener('click', nextSlideEventHandler);
-    returnBtn.addEventListener('click', returnSlideEventHandler);
 
-    
-    
-    //////////////////////////////////////////////////////////////////
+    nextBtn.addEventListener('click', function(){
+        moveSlide(currentIdx + 1);
+    });
+    prevBtn.addEventListener('click', function(){
+        moveSlide(currentIdx - 1);
+    });
+    makeClone();
+ //////////////////////////////////////////////////////////////////
 
-}
+// }
 
 /*
     정규식

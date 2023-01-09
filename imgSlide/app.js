@@ -44,7 +44,7 @@ function moveSlide(num) { // 숫자를 넘겨줘야한다 !! 앞으로 넘어가
     slides.style.left = -num * (slideWidth + slideMargin) + 'px';
     currentIdx = num;
     console.log(currentIdx, slideCount);
-    
+
     if(currentIdx == slideCount || currentIdx == -slideCount) {
         setTimeout(function() {
             slides.classList.remove('animated');
