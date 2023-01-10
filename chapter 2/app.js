@@ -141,15 +141,16 @@ function loremScrollEvent() {
         this.removeEventListener('scroll', loremScrollEvent);
     }
 }
-// let htmlScrollEvent = () => {
-//     let scroll = this.scrollTop
-//     let scrollHeight = this.scrollHeight;
-//     let clientHeight = this.clientHeight
+let htmlScrollEvent = () => {
+    let scroll = this.scrollY
+    let scrollHeight = this.scrollHeight;
+    let clientHeight = this.clientHeight
 
-//     // console.log(scroll + scrollHeight + clientHeight);
-//     console.log(this.scrollY);
+    if(scrollY > 0) alert('ada');
+    // console.log(scroll + scrollHeight + clientHeight);
+    console.log(scroll, scrollHeight, clientHeight);
 
-// }
+}
 
 //////////////////////////////////////////////////////////////////script playing
 
@@ -157,15 +158,16 @@ function loremScrollEvent() {
     let modalButton = document.querySelector('#close');
     let submitBtn = document.getElementsByClassName('btn-primary')[0];
     let darkModeBtn = document.querySelector('nav span:last-child');
-
+    
+    
     button.addEventListener('click', modalEventHandler);
     modalButton.addEventListener('click', modalCloseEventHandler);
     submitBtn.addEventListener('click', inputSubmitEventHandler);
     darkModeBtn.addEventListener('click', darkModeEventHandler);
-        
+    
     eventBox();
-
-
+    
+    
     nextBtn.addEventListener('click', function(){
         moveSlide(currentIdx + 1);
     });
@@ -173,13 +175,27 @@ function loremScrollEvent() {
         moveSlide(currentIdx - 1);
     });
     makeClone();
-
+    
     window.addEventListener('scroll', navScrollEvent)
-
+    
     document.querySelector('#member').addEventListener('scroll', loremScrollEvent);
+    
+    window.addEventListener('scroll', function() {
 
-    let html1 = document.querySelector('html');
-    html1.addEventListener('scroll', htmlScrollEvent);
+        let scrollEvent = document.querySelector('.scroll-guide'),
+        scroll = this.scrollY,
+        width = 10,
+        eventWidth = parseInt(scroll / width);
+
+        console.log('scrollY : ' + scroll);
+
+    
+        if(scroll > 0 ) {
+            scrollEvent.style.width = eventWidth + '%';
+        } else if (scroll < 30)
+        scrollEvent.style.width = 0 + '%';
+    })
+    
  //////////////////////////////////////////////////////////////////
 
 // }

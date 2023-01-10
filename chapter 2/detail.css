@@ -1,0 +1,17 @@
+#tab-content > div {
+    display: none;
+}
+.tab-menu li{
+    display: inline-block;
+}
+.tab-menu li a {
+    background-color: #ccc;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.tab-menu li a.active {
+    background-color: black;
+    color: #fff;
+}
