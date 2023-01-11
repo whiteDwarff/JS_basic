@@ -1,17 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
 #tab-content > div {
     display: none;
 }
 .tab-menu li{
+    margin-top: 20px;
     display: inline-block;
 }
 .tab-menu li a {
-    background-color: #ccc;
+    background-color: #ccc; 
     color: #fff;
     text-decoration: none;
     padding: 10px;
+    color: black;
 }
-
 .tab-menu li a.active {
     background-color: black;
     color: #fff;
+}
+#tab-content {
+    margin-top: 20px;
+    width: 1200px;
 }

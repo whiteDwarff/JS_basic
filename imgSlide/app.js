@@ -36,11 +36,11 @@ function updateWidth() { // ul의 너비를 지정
     
     slides.style.width = newWidth;
 }
-function setInitialPos() { // ul의 위치를 조정
+function setInitialPos() { // ul의 시작 위치를 조정
     let initialTranslateValue = -(slideWidth + slideMargin) * slideCount;
     slides.style.transform = 'translateX(' + initialTranslateValue + 'px)';
 }
-function moveSlide(num) { // 숫자를 넘겨줘야한다 !! 앞으로 넘어가는 버튼
+function moveSlide(num) { // 숫자를 넘겨줘야한다 !! 앞/뒤로 넘어가는 버튼
     slides.style.left = -num * (slideWidth + slideMargin) + 'px';
     currentIdx = num;
     console.log(currentIdx, slideCount);
@@ -48,7 +48,7 @@ function moveSlide(num) { // 숫자를 넘겨줘야한다 !! 앞으로 넘어가
     if(currentIdx == slideCount || currentIdx == -slideCount) {
         setTimeout(function() {
             slides.classList.remove('animated');
-            slides.style.left = '0px';
+            slides.style.left = '0';
             currentIdx = 0;
         }, 500); // animated의 transition시간
         setTimeout(function() {
@@ -63,6 +63,6 @@ nextBtn.addEventListener('click', function(){
     moveSlide(currentIdx + 1);
 });
 prevBtn.addEventListener('click', function(){
-moveSlide(currentIdx - 1);
+    moveSlide(currentIdx - 1);
 });
 makeClone();
