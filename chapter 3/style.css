@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* -------------------------------------------------------------------- */
+.card {
+    margin: 20px 0;
+    border: 2px solid #ccc;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------- */
+#tab-content > div {
+    display: none;
+}
+.tab-menu {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+.tab-menu li{
+    margin-top: 20px;
+    display: inline-block;
+}
+.tab-menu li:nth-child(2) {
+    margin: 0 20px;
+}
+.tab-menu li a {
+    /* background-color: #ccc;  */
+    /* color: #fff; */
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+    
+}
+.tab-menu li a.active {
+    border: 2px solid #ccc;
+    border-top: 3px solid orange;
+    border-bottom: 3px solid #fff;
+    /* color: #fff; */
+}
+#tab-content {
+    margin-top: 20px;
+    width: 1200px;
+}

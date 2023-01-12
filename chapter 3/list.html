@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #product-content {
+            width: 900px;
+            display: flex;
+            text-align: center;
+            /* background-color: cyan; */
+        }
+        #product-content .product{
+            border: 1px solid black;
+            width: 96%;
+            margin-right: 2%;
+        }
+        #product-content .product:last-child {
+            margin: 0;
+        }
+        #product-content .product .img {
+            height: 300px;
+            background-color: #ccc;
+        }
+        h5 {
+            font-size: 20px;
+            font-weight: normal;
+        }
+        select {
+            width: 500px;
+            height: 30px;
+            display: block;
+        }
+        option {
+            background-color: #fff;
+        }
+        .shirt-option {
+            margin-top: 20px;
+            display: none;
+        }
+        .active {
+            display: block;
+            transition: 0.1s ;
+        }
+    </style>
+</head>
+<body>
+    <section id="product-content">
+        <div class="product">
+            <div class="img"></div>
+            <h5>title</h5>
+            <p>price</p>
+        </div>
+        <div class="product">
+            <div class="img"></div>
+            <h5>title</h5>
+            <p>price</p>
+        </div>
+        <div class="product">
+            <div class="img"></div>
+            <h5>title</h5>
+            <p>price</p>
+        </div>
+    </section>
+
+
+    <form action="">
+        <p>상품선택</p>
+        <select class="select-option">
+            <option value="1">모자</option>
+            <option value="2" id="shitrs">셔츠</option>
+        </select>
+        <select class="shirt-option">
+            <option value="1">95</option>
+            <option value="2">100</option>
+            <option value="3">105</option>
+        </select>
+    </form>
+
+
+    <script>
+        let product = [
+            {id : 0, price : 70000, title : 'Blossom Dress'},
+            {id : 1, price : 50000, title : 'Springfield Shirts'},
+            {id : 2, price : 60000, title : 'Black Monastery'},
+        ];
+
+        let pdTitle = document.querySelectorAll('h5');
+        let pdPrice = document.querySelectorAll('p');
+
+        for(let i=0; i<product.length; i++) {
+            pdTitle[i].innerText = product[i].title;
+            pdPrice[i].innerText = '가격 : ' + product[i].price;
+        }
+
+        function formEvent() {
+            shirtOption = document.querySelector('.shirt-option');
+            
+            if(this.value == 2)  shirtOption.classList.add('active');
+            else shirtOption.classList.remove('active');
+        }
+
+
+        let select = document.querySelector('.select-option');
+        select.addEventListener('change', formEvent);
+    </script>
+</body>
+</html>

@@ -1,9 +1,9 @@
 let slides = document.querySelector('.slides'), // ul
     slide = document.querySelectorAll('.slides li'),
-    currentIdx = 0, //  슬라이드의 값
+    currentIdx = 0,     // 슬라이드의 값(길이)
     slideCount = slide.length
-    slideWidth = 200,
-    slideMargin = 30,
+    slideWidth = 200,   // li의 가로 값
+    slideMargin = 30,   // li의 마진 값
     prevBtn = document.querySelector('.prev'),
     nextBtn = document.querySelector('.next');
 
