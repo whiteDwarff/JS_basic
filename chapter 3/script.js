@@ -35,6 +35,6 @@ let car2 = {
 console.log(car2['name'])
 
 document.querySelector('.card span:first-child').innerText = car2.name;
-document.querySelector('.card span:last-child').innerText = car2.price[11];
+document.querySelector('.card span:last-child').innerText = car2.price[1];
 
 // ------------------------------------------------------------------------

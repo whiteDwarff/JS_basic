@@ -28,6 +28,9 @@
             font-size: 20px;
             font-weight: normal;
         }
+        form {
+            height: 150px;
+        }
         select {
             width: 500px;
             height: 30px;
@@ -42,7 +45,7 @@
         }
         .active {
             display: block;
-            transition: 0.1s ;
+            transition: 1s ease-out;
         }
     </style>
 </head>
@@ -71,6 +74,7 @@
         <select class="select-option">
             <option value="1">모자</option>
             <option value="2" id="shitrs">셔츠</option>
+            <option value="3" id="bottom">바지</option>
         </select>
         <select class="shirt-option">
             <option value="1">95</option>
@@ -79,6 +83,7 @@
         </select>
     </form>
 
+    <div id="test"></div>
 
     <script>
         let product = [
@@ -96,15 +101,61 @@
         }
 
         function formEvent() {
-            shirtOption = document.querySelector('.shirt-option');
+            let shirtOption = document.querySelector('.shirt-option'),
+                option = document.querySelectorAll('.shirt-option option'),
+                itemOption;
             
-            if(this.value == 2)  shirtOption.classList.add('active');
-            else shirtOption.classList.remove('active');
+            if(this.value == 2) {
+                shirtOption.classList.add('active');
+                shirtOption.innerHTML = '';
+                
+                // let template = `<option>95</option><option>100</option><option>105</option>`;
+                // shirtOption.insertAdjacentHTML('beforeend', template);
+
+                let shirts = [95, 100, 105, 110, 115];
+                shirts.forEach(function(item) {
+                    itemOption = `<option value="i">${item}</value>`;
+                    shirtOption.insertAdjacentHTML('beforeend', itemOption);
+                });
+            } else if(this.value == 3) {
+                shirtOption.classList.add('active');
+                shirtOption.innerHTML = '';
+
+                // let template = `<option>1</option> <option>2</option>`;
+                // shirtOption.insertAdjacentHTML('beforeend', template);
+
+                let pants = [28, 30, 32, 34];
+                pants.forEach(function(item, i) {   // 첫번째 매개변수는 list의 index, 두번쨰 매개변수는 for문의 증가되는 변수개념
+                    itemOption = `<option value="i">${item}</option>`;
+                    shirtOption.insertAdjacentHTML('beforeend', itemOption);
+                    console.log(item, i);
+                });
+            } else {
+                shirtOption.classList.remove('active');
+            }
         }
-
-
         let select = document.querySelector('.select-option');
         select.addEventListener('change', formEvent);
+
+        // ----------------------------------------- HTML 요소 생성
+        let test = document.createElement('button');
+        test.innerText = '장바구니';
+        document.getElementById('test').appendChild(test);
+        
+        let template = '<button>구매하기</button>';
+        // 문자형 HTML을 넣어주는 함수('위치', 요소)
+        document.getElementById('test').insertAdjacentHTML('beforeend', template);
+
+        ////////////////////////////////////////////////////////////////
+        const obj = {
+            name : 'kim',
+            age : 20
+        };
+        for(let key in obj) {
+            console.log(obj[key])
+        }
+        ////////////////////////////////////////////////////////////////
+
     </script>
 </body>
 </html>

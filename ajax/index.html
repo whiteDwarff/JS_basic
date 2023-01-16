@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+    </div> 
+
+    <!-- <form action="">
+        <p>상품선택</p>
+        <select class="select-option">
+            <option value="1">모자</option>
+            <option value="2" id="shitrs">셔츠</option>
+            <option value="3" id="bottom">바지</option>
+        </select>
+        <select class="shirt-option">
+            <option value="1">95</option>
+            <option value="2">100</option>
+            <option value="3">105</option>
+        </select>
+    </form>
+
+    <div id="test"></div>
+     -->
+
+    <script src="script.js"></script>
+    <!-- ajax 요청 -->
+    <script>
+
+        fetch('https://codingapple1.github.io/price.json')
+            .then(res => res.json())    // json을 문자로 변환해 줌
+            .then(data => {
+                console.log(data.price)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+    </script>
+</body>
+</html>
