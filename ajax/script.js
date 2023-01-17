@@ -1,85 +1,84 @@
-let product = [
+const product = [
     {id : 0, price : 70000, title : 'Blossom Dress'},
     {id : 1, price : 50000, title : 'Springfield Shirts'},
     {id : 2, price : 60000, title : 'Black Monastery'},
 ];
-
-const con = document.getElementsByClassName('container')[0];
-
-con.style.display = 'flex';
-let pdImg = `<img src="https://via.placeholder.com/600"</img>`,
-    title = `<h5>title</h5>`,
-    price = `<p>price</p>`;
+let priceOption = document.getElementById('price-sort'),
+    con = document.getElementsByClassName('container')[0];
+let btnCount = 1;
 
 
-for(let i=0; i<product.length; i++) {
-    let row = document.createElement('div');
-
-    con.appendChild(row);
-    row.classList.add('col-sm-4');
-    row.insertAdjacentHTML('beforeend', pdImg);
-    row.insertAdjacentHTML('beforeend', title);
-    row.insertAdjacentHTML('beforeend', price);
-
-    let titles = document.querySelectorAll('.col-sm-4 > h5');
-    let prices =  document.querySelectorAll('.col-sm-4 > p');
-    
-    titles[i].innerText = product[i].title;
-    prices[i].innerText = product[i].price;
-    row.style.marginRight = '30px';
-
-
+// ---------------------------------------------------------------------
+product.forEach(function(item) {
+    products(item);
+});
+// ---------------------------------------------------------------------
+function products(item) {
+    let template = 
+        `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600">
+            <h5>${item.title}</h5>
+            <p>가격 : ${item.price}</p>
+        </div>`
+    document.getElementsByClassName('container')[0].insertAdjacentHTML('beforeend', template);
 }
-let lastRow = document.querySelector('.col-sm-4:last-child');
-lastRow.style.marginRight = '0px';
-
-/*
-
-let pdTitle = document.querySelectorAll('h5');
-let pdPrice = document.querySelectorAll('p');
-
-for(let i=0; i<product.length; i++) {
-    pdTitle[i].innerText = product[i].title;
-    pdPrice[i].innerText = '가격 : ' + product[i].price;
+function selectSort() {
+    priceOption.addEventListener('change', function(e) {
+        e.preventDefault();
+        if(priceOption.value == 1) {
+            product.sort((a,b) => {
+                return a.price - b.price;
+            })
+            con.innerHTML = '';
+            product.forEach(function(item) {
+                products(item);
+            });
+        } else if(priceOption.value == 2) {
+            product.sort((a,b) => {
+                return b.price - a.price;
+            })
+            con.innerHTML = '';
+            product.forEach(function(item) {
+                products(item);
+            });
+        } else {
+            con.innerHTML = '';
+            product.forEach(function(item) {
+                products(item);
+            });
+        }
+    });
 }
-
-function formEvent() {
-    let shirtOption = document.querySelector('.shirt-option'),
-        option = document.querySelectorAll('.shirt-option option'),
-        itemOption;
-    
-    if(this.value == 2) {
-        shirtOption.classList.add('active');
-        shirtOption.innerHTML = '';
-        let shirts = [95, 100, 105, 110, 115];
-
-        shirts.forEach(function(item) {
-            itemOption = `<option value="i">${item}</value>`;
-            shirtOption.insertAdjacentHTML('beforeend', itemOption);
+// ---------------------------------------------------------------------
+const moreBtn = document.getElementById('more');
+moreBtn.addEventListener('click', function() {
+    fetch('https://codingapple1.github.io/js/more1.json')
+    .then(res => res.json())    // json을 문자로 변환해 줌
+    .then(data => {
+        if(btnCount == 1)
+        data.forEach(function(item) {
+            // products(item);
+            selectSort();
         });
-    } else if(this.value == 3) {
-        shirtOption.classList.add('active');
-        shirtOption.innerHTML = '';
-        let pants = [28, 30, 32, 34];
-
-        pants.forEach(function(item, i) {
-            itemOption = `<option value="i">${item}</option>`;
-            shirtOption.insertAdjacentHTML('beforeend', itemOption);
-            console.log(item, i);
-        });
-    } else {
-        shirtOption.classList.remove('active');
-    }
-}
-let select = document.querySelector('.select-option');
-select.addEventListener('change', formEvent);
-
-// ----------------------------------------- HTML 요소 생성
-let test = document.createElement('button');
-test.innerText = '장바구니';
-document.getElementById('test').appendChild(test);
-
-let template = '<button>구매하기</button>';
-// 문자형 HTML을 넣어주는 함수('위치', 요소)
-document.getElementById('test').insertAdjacentHTML('beforeend', template);
-*/
+        btnCount++;
+    })
+    .catch(error => {
+        console.log(error)
+    })
+    if(btnCount == 2) {
+        fetch('https://codingapple1.github.io/js/more2.json')
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(function(item) {
+                // products(item);
+                selectSort();
+            })
+            moreBtn.style.display = 'none';
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    };
+});
+// ---------------------------------------------------------------------
+// 가격순정렬

@@ -8,40 +8,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <select id="price-sort">
+        <option value="0">기본</option>
+        <option value="1">낮은가격순</option>
+        <option value="2">높은가격순</option>
+    </select>
     <div class="container">
-
     </div> 
+    <div class="container btn-center">
+        <button id="more">더보기</button>
+    </div>
 
-    <!-- <form action="">
-        <p>상품선택</p>
-        <select class="select-option">
-            <option value="1">모자</option>
-            <option value="2" id="shitrs">셔츠</option>
-            <option value="3" id="bottom">바지</option>
-        </select>
-        <select class="shirt-option">
-            <option value="1">95</option>
-            <option value="2">100</option>
-            <option value="3">105</option>
-        </select>
-    </form>
 
-    <div id="test"></div>
-     -->
 
     <script src="script.js"></script>
-    <!-- ajax 요청 -->
-    <script>
-
-        fetch('https://codingapple1.github.io/price.json')
-            .then(res => res.json())    // json을 문자로 변환해 줌
-            .then(data => {
-                console.log(data.price)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-
-    </script>
 </body>
 </html>
