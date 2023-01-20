@@ -2,6 +2,33 @@
     margin: 0;
     padding: 0;
 }
+.option-zone {
+    width: 1200px;
+    margin: 50px auto;
+    display: flex;
+}
+.option-zone * {
+    height: 30px;
+    width: 200px;
+    outline: none;
+    box-sizing: border-box;
+}
+.option-zone form {
+    display: none;
+    width: auto;
+}
+.option-zone input {
+    margin: 0 5px 0 50px;
+}
+.option-zone button {
+    width: 50px;
+    height: 31px;
+}
+.option-zone form.block {
+    display: block;
+}
+
+
 .container {
     width: 1200px;
     margin: 0 auto;

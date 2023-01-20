@@ -8,12 +8,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <select id="price-sort">
-        <option value="0">기본</option>
-        <option value="1">낮은가격순</option>
-        <option value="2">높은가격순</option>
-    </select>
+    <section class="option-zone">
+        <select id="price-sort">
+            <option value="0">기본</option>
+            <option value="1">낮은가격순</option>
+            <option value="2">높은가격순</option>
+            <option value="3">가격별검색</option>
+        </select>
+        <form action="" id="search">
+            <input type="text" id="price-search">
+            <button type="submit">검색</button>
+        </form>
+    </section>
     <div class="container">
+
     </div> 
     <div class="container btn-center">
         <button id="more">더보기</button>
