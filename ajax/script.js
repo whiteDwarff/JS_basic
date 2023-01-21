@@ -8,6 +8,11 @@ let priceOption = document.getElementById('price-sort'),
 let btnCount = 1;
 priceOption.addEventListener('change', selectSort);
 
+
+const guideText = document.getElementById('guide-text');
+            guideText.innerText = '검색된 상품이 없습니다.';
+            guideText.style.textAlign = 'center';
+            guideText.style.display = 'none';
 // ---------------------------------------------------------------------
 function showProduct() {
     product.forEach(function(item) {
@@ -22,11 +27,14 @@ function products(item) {
             <h5>${item.title}</h5>
             <p>가격 : ${item.price}</p>
         </div>`
-    document.getElementsByClassName('container')[0].insertAdjacentHTML('beforeend', template);
+    con.insertAdjacentHTML('beforeend', template);
 }
 function selectSort() {
     btnCount = 1;
     if(btnCount <= 2) moreBtn.style.display = 'block';
+
+    guideText.style.display = 'none';
+    more.style.display = 'block';
 
     let form = document.querySelector('#search');
     let newProduct = product;
@@ -62,6 +70,13 @@ function selectSort() {
             newProduct.forEach(function(item){
                 products(item);
             })
+            if(con.innerHTML == '') {
+                guideText.style.display = 'block';
+                more.style.display = 'none';
+            } else {
+                guideText.style.display = 'none';
+                more.style.display = 'block';
+            }
         })
     } else if(this.value == 0){
         form.classList.remove('block');
