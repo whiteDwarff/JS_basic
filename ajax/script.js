@@ -4,22 +4,18 @@ const product = [
     {id : 2, price : 60000, title : 'Black Monastery'},
 ];
 let priceOption = document.getElementById('price-sort'),
-    con = document.getElementsByClassName('container')[0];
-let btnCount = 1;
+    con = document.getElementsByClassName('container')[0],
+    btnCount = 1;
 priceOption.addEventListener('change', selectSort);
 
 
 const guideText = document.getElementById('guide-text');
-            guideText.innerText = '검색된 상품이 없습니다.';
-            guideText.style.textAlign = 'center';
-            guideText.style.display = 'none';
 // ---------------------------------------------------------------------
 function showProduct() {
     product.forEach(function(item) {
         products(item);
     });
 }
-// ---------------------------------------------------------------------
 function products(item) {
     let template = 
         `<div class="col-sm-4">
@@ -35,38 +31,40 @@ function selectSort() {
 
     guideText.style.display = 'none';
     more.style.display = 'block';
-
+    con.innerHTML = '';
+    
     let form = document.querySelector('#search');
+    form.classList.remove('block');
     let newProduct = product;
+
     if(this.value == 1) {
-        form.classList.remove('block');
         newProduct.sort((a,b) => {
             return a.price - b.price;
         })
-        con.innerHTML = '';
         newProduct.forEach(function(item) {
             products(item);
         });
     } else if(this.value == 2) {
-        form.classList.remove('block');
         newProduct.sort((a,b) => {
             return b.price - a.price;
         })
-        con.innerHTML = '';
         newProduct.forEach(function(item) {
             products(item);
         });
     } else if(this.value == 3) {
         form.classList.add('block');
+        newProduct.forEach(function(item){
+            products(item);
+        })
         let sbmBtn = document.querySelector('#search button');
         let priceValue = document.querySelector('#price-search');
         priceValue.value = '';
         sbmBtn.addEventListener('click', function(e){
-            newProduct = product.filter(function(a){
-                return a.price <= parseInt(priceValue.value);
-            })
             e.preventDefault();
             con.innerHTML = '';
+            newProduct = product.filter(function(item){
+                return item.price <= parseInt(priceValue.value);
+            })
             newProduct.forEach(function(item){
                 products(item);
             })
@@ -79,8 +77,6 @@ function selectSort() {
             }
         })
     } else if(this.value == 0){
-        form.classList.remove('block');
-        con.innerHTML = '';
         showProduct();
     }
 }

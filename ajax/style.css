@@ -45,15 +45,26 @@
 .col-sm-4:nth-child(3n) {
     margin-right: 0px;
 }
-.container button {
+.col-sm-4 h5 {
+    font-size: 20px;
+    margin: 10px 0 5px 0;
+}
+.col-sm-4 p {
+    margin-bottom: 40px;
+}
+#more {
     background-color: red;
     padding: 10px 20px;
     border-style: none;
     font-weight: bold;
     color: white;
+
 }
 .btn-center {
-    margin-top: 50px;
     display: flex;
     justify-content: center;
+}
+#guide-text {
+    text-align: center;
+    display: none;
 }
