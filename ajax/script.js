@@ -1,7 +1,8 @@
 const product = [
-    {id : 1, price : 50000, title : 'Springfield Shirts'},
-    {id : 0, price : 70000, title : 'Blossom Dress'},
+    {id : 1, price : 70000, title : 'Blossom Dress'},
+    {id : 0, price : 50000, title : 'Springfield Shirts'},
     {id : 2, price : 60000, title : 'Black Monastery'},
+    {id : 3, price : 1, title : 'aaaa'}
 ];
 let priceOption = document.getElementById('price-sort'),
     con = document.getElementsByClassName('container')[0],
@@ -22,6 +23,7 @@ function products(item) {
             <img src="https://via.placeholder.com/600">
             <h5>${item.title}</h5>
             <p>가격 : ${item.price}</p>
+            <button class="buy">담기</button>
         </div>`
     con.insertAdjacentHTML('beforeend', template);
 }
@@ -76,9 +78,7 @@ function selectSort() {
                 more.style.display = 'block';
             }
         })
-    } else if(this.value == 0){
-        showProduct();
-    }
+    } else if(this.value == 0) showProduct();
 }
 showProduct();
 // ---------------------------------------------------------------------
@@ -112,3 +112,5 @@ moreBtn.addEventListener('click', function() {
     };
 });
 // ---------------------------------------------------------------------
+
+

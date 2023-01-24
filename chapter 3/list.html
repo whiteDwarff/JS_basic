@@ -113,8 +113,8 @@
                 // shirtOption.insertAdjacentHTML('beforeend', template);
 
                 let shirts = [95, 100, 105, 110, 115];
-                shirts.forEach(function(item) {
-                    itemOption = `<option value="i">${item}</value>`;
+                shirts.forEach(function(item, i) {
+                    itemOption = `<option value="${i}">${item}</value>`;
                     shirtOption.insertAdjacentHTML('beforeend', itemOption);
                 });
             } else if(this.value == 3) {
@@ -126,7 +126,7 @@
 
                 let pants = [28, 30, 32, 34];
                 pants.forEach(function(item, i) {   // 첫번째 매개변수는 list의 index, 두번쨰 매개변수는 for문의 증가되는 변수개념
-                    itemOption = `<option value="i">${item}</option>`;
+                    itemOption = `<option value="${i}">${item}</option>`;
                     shirtOption.insertAdjacentHTML('beforeend', itemOption);
                     console.log(item, i);
                 });

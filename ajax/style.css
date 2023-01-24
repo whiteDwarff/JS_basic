@@ -6,6 +6,7 @@
     width: 1200px;
     margin: 50px auto;
     display: flex;
+    position: relative;
 }
 .option-zone * {
     height: 30px;
@@ -27,6 +28,22 @@
 .option-zone form.block {
     display: block;
 }
+#cart {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background-color: #fff;
+    font-size: 16px;
+}
+#cart-list  {
+    width: 1200px;
+    margin: 0 auto;
+}
+#cart-list li {
+    display: inline-block;
+    margin-right: 30px;
+}
 
 
 .container {
@@ -47,11 +64,16 @@
 }
 .col-sm-4 h5 {
     font-size: 20px;
-    margin: 10px 0 5px 0;
+    margin-top: 10px;
 }
 .col-sm-4 p {
-    margin-bottom: 40px;
+    margin: 10px 0;
 }
+.col-sm-4 button {
+    margin-bottom: 50px;
+    padding: 5px;
+}
+
 #more {
     background-color: red;
     padding: 10px 20px;
