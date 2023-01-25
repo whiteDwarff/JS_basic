@@ -1,33 +1,29 @@
-/*
-
-*/
 
 // -----------------------------------------------------------------
 const CART = document.getElementsByClassName('buy');
 for(let item of CART) item.addEventListener('click',cartOption);
 
 function cartOption() {
-    let sibling = this.previousElementSibling;
     // 현재 노드의 이전 노드를 반환하며 이전 노드가 존재하지 않으면 null을 반환
-    let title = sibling.previousElementSibling.innerHTML;
     // 이전 노드의 이전 노드를 찾으려면 같은 작업을 반복 수행
-    let basket = [];
-    basket.push(title)
+    let title = this.previousElementSibling.previousElementSibling.innerHTML,
+        price = this.previousElementSibling.innerHTML,
+        count = 0,
+        product = `title : ${title}, price : ${price}, count : ${count}`;
     
-    if(localStorage.length == 0) {
-        localStorage.setItem('cart', JSON.stringify(basket));
-    } else if(localStorage.length) {
-        let item = JSON.parse(localStorage.getItem('cart'));
-        item.push(title);
+    if(localStorage.length) {
+        let item = JSON.parse(localStorage.cart);
+        item.push(product);
         localStorage.setItem('cart', JSON.stringify(item));
-        console.log(localStorage.cart);
+    } else {
+        localStorage.setItem('cart', JSON.stringify([product]));
     }
 }
 // -----------------------------------------------------------------
 let cartList = JSON.parse(localStorage.getItem('cart'));
 let cartBox = document.getElementById('cart-list');
-cartList.forEach((item, i) => {
-    let template = `<li>${i + 1}. ${item}</li>`;
+cartList.forEach((item) => {
+    let template = `<li>${item}</li>`;
     cartBox.insertAdjacentHTML('beforeend', template);
     console.log(template);
 })
