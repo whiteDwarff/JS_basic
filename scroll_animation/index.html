@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card-background {
+            height: 4000px;
+            /* margin: 800px 0 400px 0; */
+        }
+        .card-box {
+            position: sticky;
+            top: 100px;
+            opacity: 1;
+            transition: 1s ease-out;
+            margin-bottom: 200px;
+        }
+        .card-box img{
+            max-width: 80%;
+            display: block;
+            margin: auto;
+        }
+        .card-box img:first-child {
+            margin-bottom: 0;
+        }
+        .opacity {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="card-background">
+        <p style="font-size: 45px; text-align: center;"><b>it's as easy<br>at it sounds.</b></p>
+        <div class="card-box">
+            <img src="../IMG/card1.png" alt="">
+        </div>
+        <div class="card-box">
+            <img src="../IMG/card2.png" alt="">
+        </div>
+        <div class="card-box">
+            <img src="../IMG/card3.png" alt="">
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function(){
+            let height = this.scrollY;
+            console.log(height);
+            let cardBox = document.getElementsByClassName('card-box')[0];
+            let cardBox1 = document.getElementsByClassName('card-box')[1];
+                if(height >= 650) cardBox.classList.add('opacity');
+                else cardBox.classList.remove('opacity');
+                if(height >= 1200) cardBox1.classList.add('opacity');
+                else cardBox1.classList.remove('opacity');
+        });
+    </script>
+</body>
+</html>
