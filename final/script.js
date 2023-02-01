@@ -34,7 +34,7 @@ products.forEach(function(item){
 function cardSetting(item){
     const cardBox = document.getElementById('card-box');
     let card = `
-    <div class="card-list">
+    <div class="card-list" data-id="${item.id}" draggable="true">
         <img src=${item.photo} class="photo">
         <span class="title">${item.title}</span>
         <span class="brand">${item.brand}</span>
@@ -45,20 +45,35 @@ function cardSetting(item){
     cardBox.insertAdjacentHTML('beforeend', card);
 }
 
-
+const cardList = document.getElementsByClassName('card-list');
+const cardBox = document.getElementById('card-box');
 const form = document.getElementsByTagName('form')[0];
+const cart = document.getElementById('cart-list');
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     let productTitle = document.getElementsByClassName('title'),
         input = document.getElementById('search').value;
-        
-    const cardBox = document.getElementById('card-box');
     
-    for(let item of productTitle) {
-        if(item.innerText.includes(input)) {
-            cardBox.innerHTML = '';
-        } 
-
-    }
-
+    cardBox.innerHTML = '';
+    let newProducts = products.filter(function(item){
+        return item.title.includes(input);
+    })
+    newProducts.forEach(function(item){
+        cardSetting(item);
+    })
+})
+let draggingCard = null;
+for(let item of cardList) {
+    item.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        draggingCard = this;
+        console.log(draggingCard.innerHTML)
+    })
+}
+cart.addEventListener('drop', function(e){
+    e.preventDefault();
+    let div = document.createElement('div');
+    cart.appendChild(div);
+    div.appendChild(draggingCard);
+    console.log(div);
 })

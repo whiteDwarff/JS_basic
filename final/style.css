@@ -111,3 +111,12 @@ header a {
     font-size: 20px;
     font-weight: bold;
 }
+
+#card-list div {
+    background-color: white;
+    width: 20%;
+    height: 90%;
+    margin-right: 3%;
+    padding: 20px;
+    display: inline;
+}
